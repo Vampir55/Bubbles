@@ -1,5 +1,9 @@
 # My test project "Bubbles" to learning Classes and pygame lib
-from pygame import draw
+import pygame as pg
+
+
+display = pg.display.set_mode((1000, 500))
+
 class Bubble:
     x = 0
     y = 0
@@ -14,6 +18,7 @@ def main():
 
 def drawbubble(Bubble):
     print("drawing bubble", Bubble.x, Bubble.y, Bubble.radius, Bubble.color)
+    pg.draw.circle(1, Bubble.color, (Bubble.x, Bubble.y), Bubble.radius)
 
 
 main()  # call main function
