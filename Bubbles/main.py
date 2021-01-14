@@ -27,7 +27,9 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
-            # there is main loop and asking for events
+        # there is main loop and asking for events
+        bubble = Bubble()
+        bubble.draw()
 
 
 pg.display.init()
