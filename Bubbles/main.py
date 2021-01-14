@@ -8,10 +8,10 @@ import pygame as pg
 
 # Make new class "Bubble"
 class Bubble:
-    __init__
-    radius = 10
-    coordinates = x, y = (0, 0)
-    color = (0, 0, 0)
+    def __init__
+        radius = 10
+        coordinates = x, y = (0, 0)
+        color = (0, 0, 0)
 
     def draw(self):
         pass
