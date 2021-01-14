@@ -31,14 +31,13 @@ class Bubble:
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
 
     def test_collision(self, other_obj):
-        # if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
-        #     self.vx *= -1
-        # if self.y + self.radius >= settings.HEIGHT or self.y + self.radius <= 0:
-        #     self.vy *= -1
-        # if self.x + self.radius == other_obj.x + other_obj.radius:
-        #     self.vx *= -1
-        # if self.y + self.radius == other_obj.y + other_obj.radius:
-        #     self.vy *= -1
+        if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
+            self.vx *= -1
+        if self.y + self.radius >= settings.HEIGHT or self.y + self.radius <= 0:
+            self.vy *= -1
+        if self.x + self.radius == other_obj.x + other_obj.radius and self.y + self.radius == other_obj.y + other_obj.radius:
+            self.vx *= -1
+            self.vy *= -1
         self.speed = (self.vx, self.vy)
 
 
