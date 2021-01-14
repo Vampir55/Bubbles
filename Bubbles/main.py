@@ -9,12 +9,19 @@ import pygame as pg
 # Make new class "Bubble"
 class Bubble:
     def __init__(self):
-        radius = 10
-        coordinates = x, y = (0, 0)
-        color = (0, 0, 0)
+        self.radius = 10
+        self.coordinates = x, y = (0, 0)
+        self.speed = vx, vy = (0, 0)
+        self.color = (0, 0, 0)
+
+    def create(self, radius, coordinates, color):
+        self.radius = radius
+        self.coordinates = coordinates
+        self.color = color
 
     def draw(self):
-        pass
+        pg.draw.circle(screen, self.color, self.coordinates, self.radius)
+
 
     def collision(self):
         pass
@@ -28,10 +35,11 @@ def main():
             if event.type == pg.QUIT:
                 running = False
         # there is main loop and asking for events
+        # create Bubbles and draw it
         bubble = Bubble()
         bubble.draw()
 
-
+# Screen initialization
 pg.display.init()
 screen = pg.display.set_mode((640, 480), 0, 32)
 screen.fill(colors.WHITE)
