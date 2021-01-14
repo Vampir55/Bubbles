@@ -23,9 +23,8 @@ class Bubble:
 def main():
     pass
 
-
-screen = pg.display.set_mode((640,480),0,32)
 pg.display.init()
+screen = pg.display.set_mode((640, 480), 0, 32)
 screen.fill(color.WHITE)
 pg.display.flip()
 
