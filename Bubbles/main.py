@@ -25,7 +25,7 @@ def main():
     running = True
     while running:
         for event in pg.event.get():
-            if event == pg.QUIT:
+            if event.type == pg.QUIT:
                 running = False
             # there is main loop and asking for events
 
