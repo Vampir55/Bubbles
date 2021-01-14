@@ -37,6 +37,7 @@ def main():
         # there is main loop and asking for events
         # create Bubbles and draw it
         bubble = Bubble()
+        bubble.create(20, (100, 100), colors.RED)
         bubble.draw()
 
 # Screen initialization
