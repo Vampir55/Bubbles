@@ -2,7 +2,8 @@
 
 # Import libs and modules
 import sys
-import colors as colors
+import settings
+import colors
 import pygame as pg
 
 
@@ -23,7 +24,7 @@ class Bubble:
         self.coordinates += self.speed
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
 
-    def collision(self):
+    def collision(self, other_obj):
         pass
 
 
