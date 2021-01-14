@@ -2,13 +2,13 @@
 
 # Import libs and modules
 import sys
-import colors as color
+import colors as colors
 import pygame as pg
 
 
 # Make new class "Bubble"
 class Bubble:
-    def __init__
+    def __init__(self):
         radius = 10
         coordinates = x, y = (0, 0)
         color = (0, 0, 0)
@@ -21,11 +21,18 @@ class Bubble:
 
 
 def main():
-    pass
+    # stats main loop
+    running = True
+    while running:
+        for event in pg.event.get():
+            if event == pg.QUIT:
+                running = False
+            # there is main loop and asking for events
+
 
 pg.display.init()
 screen = pg.display.set_mode((640, 480), 0, 32)
-screen.fill(color.WHITE)
+screen.fill(colors.WHITE)
 pg.display.flip()
 
 
