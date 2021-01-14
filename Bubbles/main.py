@@ -33,6 +33,10 @@ class Bubble:
 
 
 def main():
+    # Creating Bubbles
+    bubble = Bubble()
+    bubble.create(20, (100, 100), colors.RED)
+    bubble.speed = (1, 1)
     # stats main loop
     running = True
     while running:
@@ -40,18 +44,17 @@ def main():
             if event.type == pg.QUIT:
                 running = False
         # there is main loop and asking for events
-        # create Bubbles and draw it
-        bubble = Bubble()
-        bubble.create(20, (100, 100), colors.RED)
-        bubble.speed = (1, 1)
+        # draw bubbles
         bubble.draw()
+        # screen update
         pg.display.flip()
+        screen.fill(settings.BACKGROUND)
 
 # Screen initialization
 pg.display.init()
 screen = pg.display.set_mode((settings.WIDTH, settings.HEIGHT), 0, 32)
 pg.display.set_caption("Bubbles Game")
-screen.fill(colors.WHITE)
+screen.fill(settings.BACKGROUND)
 pg.display.flip()
 
 
