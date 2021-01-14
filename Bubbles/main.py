@@ -10,8 +10,10 @@ import pygame as pg
 # Make new class "Bubble"
 class Bubble:
     def __init__(self):
+        self.x = 0
+        self.y = 0
         self.radius = 10
-        self.coordinates = (x, y) = (0, 0)
+        self.coordinates = (self.x, self.y)
         self.speed = (vx, vy) = (0, 0)
         self.color = (0, 0, 0)
 
@@ -21,8 +23,9 @@ class Bubble:
         self.color = color
 
     def draw(self):
-        self.coordinates[0] += self.speed[0]
-        self.coordinates[1] += self.speed[1]
+        self.x = self.coordinates[0] + self.speed[0]
+        self.y = self.coordinates[1] + self.speed[1]
+        self.coordinates = (self.x, self.y)
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
 
     def collision(self, other_obj):
