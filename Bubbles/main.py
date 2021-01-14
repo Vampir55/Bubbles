@@ -45,7 +45,7 @@ def main():
 
 # Screen initialization
 pg.display.init()
-screen = pg.display.set_mode((640, 480), 0, 32)
+screen = pg.display.set_mode((settings.WIDTH, settings.HEIGHT), 0, 32)
 pg.display.set_caption("Bubbles Game")
 screen.fill(colors.WHITE)
 pg.display.flip()
