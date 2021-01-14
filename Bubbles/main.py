@@ -39,10 +39,12 @@ def main():
         bubble = Bubble()
         bubble.create(20, (100, 100), colors.RED)
         bubble.draw()
+        pg.display.flip()
 
 # Screen initialization
 pg.display.init()
 screen = pg.display.set_mode((640, 480), 0, 32)
+pg.display.set_caption("Bubbles Game")
 screen.fill(colors.WHITE)
 pg.display.flip()
 
