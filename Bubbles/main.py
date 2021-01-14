@@ -48,6 +48,7 @@ def main():
         bubble.draw()
         # screen update
         pg.display.flip()
+        pg.time.delay(settings.FPS)
         screen.fill(settings.BACKGROUND)
 
 # Screen initialization
