@@ -48,6 +48,9 @@ def main():
     bubble = Bubble()
     bubble.create(20, (100, 100), colors.RED)
     bubble.speed = (1, 1)
+    bubble2 = Bubble()
+    bubble.create(40, (200, 400), colors.GREEN)
+    bubble.speed = (1, 2)
     # stats main loop
     running = True
     while running:
@@ -56,7 +59,10 @@ def main():
                 running = False
         # there is main loop and asking for events
         # draw bubbles
+        bubble.test_collision()
         bubble.draw()
+        bubble2.test_collision()
+        bubble2.draw()
         # screen update
         pg.display.flip()
         pg.time.delay(settings.FPS)
