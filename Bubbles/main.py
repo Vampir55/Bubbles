@@ -39,7 +39,7 @@ class Bubble:
             self.vx *= -1
         if self.y + self.radius == other_obj.y + other_obj.radius:
             self.vy *= -1
-        self.speed = (self.x, self.y)
+        self.speed = (self.vx, self.vy)
 
 
 
@@ -49,8 +49,8 @@ def main():
     bubble.create(20, (100, 100), colors.RED)
     bubble.speed = (1, 1)
     bubble2 = Bubble()
-    bubble.create(40, (200, 400), colors.GREEN)
-    bubble.speed = (1, 2)
+    bubble2.create(40, (200, 400), colors.GREEN)
+    bubble2.speed = (1, 2)
     # stats main loop
     running = True
     while running:
@@ -59,9 +59,9 @@ def main():
                 running = False
         # there is main loop and asking for events
         # draw bubbles
-        bubble.test_collision()
+        bubble.test_collision(bubble2)
         bubble.draw()
-        bubble2.test_collision()
+        bubble2.test_collision(bubble)
         bubble2.draw()
         # screen update
         pg.display.flip()
