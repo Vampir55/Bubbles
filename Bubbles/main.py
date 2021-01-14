@@ -14,7 +14,7 @@ class Bubble:
         self.vx, self.vy = 0, 0
         self.radius = 10
         self.coordinates = (self.x, self.y)
-        self.speed = (0, 0)
+        self.speed = (self.vx, self.vy)
         self.color = (0, 0, 0)
 
     def create(self, radius, coordinates, color):
@@ -31,14 +31,14 @@ class Bubble:
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
 
     def test_collision(self, other_obj):
-        if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
-            self.vx *= -1
-        if self.y + self.radius >= settings.HEIGHT or self.y + self.radius <= 0:
-            self.vy *= -1
-        if self.x + self.radius == other_obj.x + other_obj.radius:
-            self.vx *= -1
-        if self.y + self.radius == other_obj.y + other_obj.radius:
-            self.vy *= -1
+        # if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
+        #     self.vx *= -1
+        # if self.y + self.radius >= settings.HEIGHT or self.y + self.radius <= 0:
+        #     self.vy *= -1
+        # if self.x + self.radius == other_obj.x + other_obj.radius:
+        #     self.vx *= -1
+        # if self.y + self.radius == other_obj.y + other_obj.radius:
+        #     self.vy *= -1
         self.speed = (self.vx, self.vy)
 
 
@@ -59,10 +59,10 @@ def main():
                 running = False
         # there is main loop and asking for events
         # draw bubbles
-        bubble.test_collision(bubble2)
         bubble.draw()
-        bubble2.test_collision(bubble)
+        bubble.test_collision(bubble2)
         bubble2.draw()
+        bubble2.test_collision(bubble)
         # screen update
         pg.display.flip()
         pg.time.delay(settings.FPS)
