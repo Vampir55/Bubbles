@@ -20,8 +20,8 @@ class Bubble:
         self.color = color
 
     def draw(self):
+        self.coordinates += self.speed
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
-
 
     def collision(self):
         pass
@@ -38,6 +38,7 @@ def main():
         # create Bubbles and draw it
         bubble = Bubble()
         bubble.create(20, (100, 100), colors.RED)
+        bubble.speed = (1, 1)
         bubble.draw()
         pg.display.flip()
 
