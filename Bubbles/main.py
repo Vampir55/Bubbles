@@ -11,8 +11,8 @@ import pygame as pg
 class Bubble:
     def __init__(self):
         self.radius = 10
-        self.coordinates = x, y = (0, 0)
-        self.speed = vx, vy = (0, 0)
+        self.coordinates = (x, y) = (0, 0)
+        self.speed = (vx, vy) = (0, 0)
         self.color = (0, 0, 0)
 
     def create(self, radius, coordinates, color):
@@ -21,7 +21,8 @@ class Bubble:
         self.color = color
 
     def draw(self):
-        self.coordinates += self.speed
+        self.coordinates[0] += self.speed[0]
+        self.coordinates[1] += self.speed[1]
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
 
     def collision(self, other_obj):
