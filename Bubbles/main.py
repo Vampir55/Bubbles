@@ -47,8 +47,8 @@ class Bubble:
         self.speed = (self.vx, self.vy)
 
     def test_collision_circle(self, other_obj):
-        for i_self in range(1,self.r_length):
-            for i_other in range(1,other_obj.r_length):
+        for i_self in range(1, self.r_length):
+            for i_other in range(1, other_obj.r_length):
                 pass
 
 
@@ -62,13 +62,11 @@ def main():
         cord_y = rnd.randrange(50, settings.HEIGHT, 50)
         spd_x = rnd.randint(1, 4)
         spd_y = rnd.randint(1, 4)
-        clr_rnd = rnd.randint(2, len(colors.COLORS_LIST))
+        clr_rnd = rnd.randint(1, colors.COLORS_LIST.count())
         bubbles.append(Bubble())
         bubbles[num].create(rad, (cord_x, cord_y), colors.COLORS_LIST[clr_rnd])
         bubbles[num].speed = (spd_x, spd_y)
-    # bubble2 = Bubble()
-    # bubble2.create(40, (200, 400), colors.GREEN)
-    # bubble2.speed = (1, 2)
+
     # stats main loop
     running = True
     while running:
