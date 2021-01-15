@@ -2,6 +2,7 @@
 
 # Import libs and modules
 import sys
+import random as rnd
 import math
 import settings
 import colors
@@ -51,14 +52,20 @@ class Bubble:
                 pass
 
 
-
 def main():
     # Creating Bubbles
+    rnd.seed()
     bubbles = []
     for num in range(0, settings.NUM_BUBBLES):
-       bubbles.append(Bubble())
-       bubbles[num].create(20, (100, 100), colors.RED)
-       bubbles[num].speed = (1, 1)
+        rad = rnd.randrange(10, 40, 5)
+        cord_x = rnd.randrange(50, settings.WIDTH, 50)
+        cord_y = rnd.randrange(50, settings.HEIGHT, 50)
+        spd_x = rnd.randint(1, 4)
+        spd_y = rnd.randint(1, 4)
+        clr_rnd = rnd.randint(2, 7)
+        bubbles.append(Bubble())
+        bubbles[num].create(rad, (cord_x, cord_y), colors.RED)
+        bubbles[num].speed = (spd_x, spd_y)
     # bubble2 = Bubble()
     # bubble2.create(40, (200, 400), colors.GREEN)
     # bubble2.speed = (1, 2)
