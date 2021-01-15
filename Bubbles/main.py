@@ -2,6 +2,7 @@
 
 # Import libs and modules
 import sys
+import math
 import settings
 import colors
 import pygame as pg
@@ -16,6 +17,7 @@ class Bubble:
         self.coordinates = (self.x, self.y)
         self.speed = (self.vx, self.vy)
         self.color = (0, 0, 0)
+        self.r_length = 2*math.pi*self.radius
 
     def create(self, radius, coordinates, color):
         self.radius = radius
@@ -43,16 +45,23 @@ class Bubble:
             self.vy *= -1
         self.speed = (self.vx, self.vy)
 
+    def test_collision_circle(self, other_obj):
+        for i_self in range(1,self.r_length):
+            for i_other in range(1,other_obj.r_length):
+                pass
+
 
 
 def main():
     # Creating Bubbles
-    bubble = Bubble()
-    bubble.create(20, (100, 100), colors.RED)
-    bubble.speed = (1, 1)
-    bubble2 = Bubble()
-    bubble2.create(40, (200, 400), colors.GREEN)
-    bubble2.speed = (1, 2)
+    bubbles = []
+    for num in range(0, settings.NUM_BUBBLES):
+       bubbles.append(Bubble())
+       bubbles[num].create(20, (100, 100), colors.RED)
+       bubbles[num].speed = (1, 1)
+    # bubble2 = Bubble()
+    # bubble2.create(40, (200, 400), colors.GREEN)
+    # bubble2.speed = (1, 2)
     # stats main loop
     running = True
     while running:
