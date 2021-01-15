@@ -64,12 +64,14 @@ def main():
     rnd.seed()
     bubbles = []
     for num in range(0, settings.NUM_BUBBLES):
-        rad = rnd.randrange(10, 40, 5)
+        rad = rnd.randrange(15, 45, 5)
         cord_x = rnd.randrange(50, settings.WIDTH, 50)
         cord_y = rnd.randrange(50, settings.HEIGHT, 50)
         spd_x = rnd.randint(1, 4)
         spd_y = rnd.randint(1, 4)
-        clr_rnd = rnd.randint(0, len(colors.COLORS_LIST)-1)
+        clr_rnd = rnd.randint(0, len(colors.COLORS_LIST) - 1)
+        while colors.COLORS_LIST[clr_rnd] == settings.BACKGROUND:
+            clr_rnd = rnd.randint(0, len(colors.COLORS_LIST)-1)
         bubbles.append(Bubble())
         bubbles[num].create(rad, (cord_x, cord_y), colors.COLORS_LIST[clr_rnd])
         bubbles[num].speed = (spd_x, spd_y)
