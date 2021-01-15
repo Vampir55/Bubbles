@@ -32,6 +32,13 @@ class Bubble:
         self.y = self.coordinates[1] + self.vy
         self.coordinates = (self.x, self.y)
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
+        pg.draw.circle(screen, colors.WHITE, (self.x+self.radius/2, self.y-self.radius/2), self.radius/5)
+        pg.draw.arc(screen, colors.BLACK, (self.x-self.radius+2, self.y-self.radius-2, self.radius * 2,
+                                           self.radius * 2), math.pi-0.2, 3/2 * math.pi+0.2, width=1)
+        pg.draw.arc(screen, colors.BLACK, (self.x - self.radius + 4, self.y - self.radius - 4, self.radius * 2,
+                                           self.radius * 2), math.pi+0.1, 3 / 2 * math.pi-0.1, width=1)
+        pg.draw.arc(screen, colors.BLACK, (self.x - self.radius + 6, self.y - self.radius - 6, self.radius * 2,
+                                           self.radius * 2), math.pi+0.4, 3 / 2 * math.pi-0.4, width=1)
 
     def test_collision(self, other_obj):
         if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
