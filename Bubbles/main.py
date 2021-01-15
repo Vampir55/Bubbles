@@ -62,7 +62,7 @@ def main():
         cord_y = rnd.randrange(50, settings.HEIGHT, 50)
         spd_x = rnd.randint(1, 4)
         spd_y = rnd.randint(1, 4)
-        clr_rnd = rnd.randint(1, colors.COLORS_LIST.count())
+        clr_rnd = rnd.randint(0, len(colors.COLORS_LIST)-1)
         bubbles.append(Bubble())
         bubbles[num].create(rad, (cord_x, cord_y), colors.COLORS_LIST[clr_rnd])
         bubbles[num].speed = (spd_x, spd_y)
