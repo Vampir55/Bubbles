@@ -70,10 +70,13 @@ def main():
                 running = False
         # there is main loop and asking for events
         # draw bubbles
-        bubble.draw()
-        bubble.test_collision(bubble2)
-        bubble2.draw()
-        bubble2.test_collision(bubble)
+        for num in range(0, settings.NUM_BUBBLES):
+            bubbles[num].draw()
+            p = 1
+            if num+1 >= settings.NUM_BUBBLES:
+                p = 0
+            bubbles[num].test_collision(bubbles[num+p])
+
         # screen update
         pg.display.flip()
         pg.time.delay(settings.FPS)
