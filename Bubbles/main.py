@@ -128,7 +128,7 @@ def main():
         create_game_field(0)
 
         # draw bubbles
-        for num in range(0, settings.NUM_BUBBLES):
+        for num in range(0, settings.NUM_BUBBLES-1):
             bubbles[num].draw()
             p = 1
             if num+1 >= settings.NUM_BUBBLES:
