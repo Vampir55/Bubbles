@@ -65,7 +65,7 @@ class Bubble:
                 (m_pos[1] < self.y + self.radius) and (m_pos[1] > self.y - self.radius) and \
                 (pg.mouse.get_pressed() == (True, False, False)):
             self.vx, self.vy = 0, 0
-            for rad in range(self.radius, 0, step=-1):
+            for rad in range(self.radius, 0, -1):
                 self.radius = rad
             return self.score
 
