@@ -78,6 +78,10 @@ def create_bubbles():
     return bubbles
 
 
+def create_game_field():
+    pass
+
+
 def main():
     # Call function create bubbles
     bubbles = create_bubbles()
