@@ -129,8 +129,7 @@ def main():
 
         # draw bubbles
         for num in range(0, settings.NUM_BUBBLES):
-            if bubbles[num] in bubbles:
-                bubbles[num].draw()
+            bubbles[num].draw()
             p = 1
             if num+1 >= settings.NUM_BUBBLES:
                 p = 0
@@ -138,7 +137,7 @@ def main():
             bubble_score = bubbles[num].test_mouse_pressed()
             if bubbles[num].radius < 1:
                 score = score + bubble_score
-                bubbles.pop(num)
+                bubbles.remove(bubbles[num])
                 settings.NUM_BUBBLES -= 1
 
         # screen update
