@@ -112,10 +112,10 @@ def create_game_field(score):
 
 
 def finish_game(score):
-    pg.draw.rect(screen, colors.BLUE, (1, settings.HEIGHT/2-10, settings.WIDTH/2 - 10, settings.SCORE_HEIGHT - 6), width=8, border_radius=20)
+    pg.draw.rect(screen, colors.BLUE, (settings.WIDTH/2-250, settings.HEIGHT/2-10, 500, settings.SCORE_HEIGHT), width=8, border_radius=20)
     font = pg.font.Font(None, 46)
-    text_score = font.render('Game over! Your score is ' + str(score), True, colors.CYAN, None)
-    screen.blit(text_score, (settings.WIDTH/2 + 10, settings.HEIGHT/2 -250))
+    text_score = font.render('Game over! Your score is ' + str(score) + '!', True, colors.CYAN, None)
+    screen.blit(text_score, (settings.WIDTH/2-220, settings.HEIGHT/2))
 
 
 def main():
