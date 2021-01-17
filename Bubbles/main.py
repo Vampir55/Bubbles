@@ -147,7 +147,7 @@ def main():
                 score = score + bubble_score
                 bubbles.remove(bubbles[num])
                 settings.NUM_BUBBLES -= 1
-            if bubbles[num].color <> colors.RED:
+            if bubbles[num].color != colors.RED:
                 flag_endgame = False
         if flag_endgame:
             # Calling finish game function
