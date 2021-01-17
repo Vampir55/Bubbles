@@ -62,7 +62,8 @@ class Bubble:
     def test_mouse_pressed(self):
         m_pos = pg.mouse.get_pos()
         if (m_pos[0] < self.x + self.radius) and (m_pos[0] > self.x - self.radius) and \
-                (m_pos[1] < self.y + self.radius) and (m_pos[1] > self.y - self.radius):
+                (m_pos[1] < self.y + self.radius) and (m_pos[1] > self.y - self.radius) and \
+                (pg.mouse.get_pressed(num_buttons=1)):
             self.vx, self.vy = 0, 0
             for rad in range(self.radius, 0, step=-1):
                 self.radius = rad
