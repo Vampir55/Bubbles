@@ -125,17 +125,17 @@ def main():
                 running = False
 
         # draw game field
-        create_game_field(0)
+        create_game_field(score)
 
         # draw bubbles
         for num in range(0, settings.NUM_BUBBLES-1):
             bubbles[num].draw()
             p = 1
-            if num == settings.NUM_BUBBLES:
+            if num == settings.NUM_BUBBLES-1:
                 p = 0
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
-            if bubbles[num].radius < 1:
+            if bubbles[num].radius <= 1:
                 score = score + bubble_score
                 bubbles.remove(bubbles[num])
                 settings.NUM_BUBBLES -= 1
