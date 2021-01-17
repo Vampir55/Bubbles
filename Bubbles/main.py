@@ -19,6 +19,7 @@ class Bubble:
         self.speed = (self.vx, self.vy)
         self.color = (0, 0, 0)
         self.r_length = 2*math.pi*self.radius
+        self.score = 0
 
     def create(self, radius, coordinates, color):
         self.radius = radius
@@ -58,6 +59,15 @@ class Bubble:
             for i_other in range(1, other_obj.r_length):
                 pass
 
+    def test_mouse_pressed(self):
+        m_pos = pg.mouse.get_pos()
+        if (m_pos[0] < self.x + self.radius) and (m_pos[0] > self.x - self.radius) and \
+                (m_pos[1] < self.y + self.radius) and (m_pos[1] > self.y - self.radius):
+            self.vx, self.vy = 0, 0
+            for rad in range(self.radius, 0, step=-1):
+                self.radius = rad
+            return self.score
+
 
 def create_bubbles():
     # Creating Bubbles
@@ -72,9 +82,18 @@ def create_bubbles():
         clr_rnd = rnd.randint(0, len(colors.COLORS_LIST) - 1)
         while colors.COLORS_LIST[clr_rnd] == settings.BACKGROUND:
             clr_rnd = rnd.randint(0, len(colors.COLORS_LIST)-1)
+        # score colors settings
+        if clr_rnd == colors.RED:
+            score_rnd = -100
+        elif clr_rnd == colors.CYAN:
+            score_rnd = 50
+        else:
+            score_rnd = rnd.randint(0, 40)
+
         bubbles.append(Bubble())
         bubbles[num].create(rad, (cord_x, cord_y), colors.COLORS_LIST[clr_rnd])
         bubbles[num].speed = (spd_x, spd_y)
+        bubbles[num].score = score_rnd
     return bubbles
 
 
@@ -88,6 +107,7 @@ def create_game_field(score):
 def main():
     # Call function create bubbles
     bubbles = create_bubbles()
+    score = 0
 
     # stats main loop
     running = True
@@ -107,6 +127,10 @@ def main():
             if num+1 >= settings.NUM_BUBBLES:
                 p = 0
             bubbles[num].test_collision(bubbles[num+p])
+            bubble_score = bubbles[num].test_mouse_pressed()
+            if bubble_score:
+                score += bubble_score
+                bubbles.pop(__index=num)
 
         # screen update
         pg.display.flip()
