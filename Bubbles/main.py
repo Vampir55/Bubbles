@@ -131,7 +131,7 @@ def main():
         for num in range(0, settings.NUM_BUBBLES-1):
             bubbles[num].draw()
             p = 1
-            if num >= settings.NUM_BUBBLES:
+            if num == settings.NUM_BUBBLES:
                 p = 0
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
