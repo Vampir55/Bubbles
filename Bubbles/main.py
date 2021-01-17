@@ -73,7 +73,7 @@ class Bubble:
                 (pg.mouse.get_pressed() == (True, False, False)):
             self.vx, self.vy = 0, 0
             self.v_radius = -1
-            return self.score
+        return self.score
 
 
 def create_bubbles():
@@ -136,7 +136,7 @@ def main():
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
             if bubbles[num].radius < 1:
-                score = score + int(bubble_score)
+                score = score + bubble_score
                 bubbles.pop(num)
 
         # screen update
