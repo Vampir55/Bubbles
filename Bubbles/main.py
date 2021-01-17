@@ -115,7 +115,7 @@ def finish_game(score):
     pg.draw.rect(screen, colors.BLUE, (settings.WIDTH/2-250, settings.HEIGHT/2-10, 500, settings.SCORE_HEIGHT), width=8, border_radius=20)
     font = pg.font.Font(None, 46)
     text_score = font.render('Game over! Your score is ' + str(score) + '!', True, colors.CYAN, None)
-    screen.blit(text_score, (settings.WIDTH/2-220, settings.HEIGHT/2))
+    screen.blit(text_score, (settings.WIDTH/2-225, settings.HEIGHT/2))
 
 
 def main():
