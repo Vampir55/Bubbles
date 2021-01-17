@@ -41,9 +41,9 @@ class Bubble:
                                            self.radius * 2), math.pi+0.4, 3 / 2 * math.pi-0.4, width=1)
 
     def test_collision(self, other_obj):
-        if self.x + self.radius >= settings.WIDTH or self.x + self.radius <= 0:
+        if self.x + self.radius >= settings.WIDTH or self.x - self.radius <= 0:
             self.vx *= -1
-        if self.y + self.radius >= settings.HEIGHT or self.y + self.radius <= 0:
+        if self.y + self.radius >= settings.HEIGHT or self.y - self.radius - settings.SCORE_HEIGHT <= 0:
             self.vy *= -1
         if (self.x + self.radius == other_obj.x - other_obj.radius) or \
                 (self.y + self.radius == other_obj.y - other_obj.radius) or \
@@ -53,7 +53,7 @@ class Bubble:
             self.vy *= -1
         self.speed = (self.vx, self.vy)
 
-    def test_collision_circle(self, other_obj):
+    def test_collision_circle(self, other_obj):  # FIXME
         for i_self in range(1, self.r_length):
             for i_other in range(1, other_obj.r_length):
                 pass
@@ -65,8 +65,8 @@ def main():
     bubbles = []
     for num in range(0, settings.NUM_BUBBLES):
         rad = rnd.randrange(15, 45, 5)
-        cord_x = rnd.randrange(50, settings.WIDTH, 50)
-        cord_y = rnd.randrange(50, settings.HEIGHT, 50)
+        cord_x = rnd.randrange(50+rad, settings.WIDTH-rad, 50)
+        cord_y = rnd.randrange(50+settings.SCORE_HEIGHT+rad, settings.HEIGHT-settings.SCORE_HEIGHT-rad, 50)
         spd_x = rnd.randint(1, 4)
         spd_y = rnd.randint(1, 4)
         clr_rnd = rnd.randint(0, len(colors.COLORS_LIST) - 1)
