@@ -6,4 +6,5 @@ HEIGHT = 600
 SCORE_HEIGHT = 50
 BACKGROUND = colors.BLACK
 FPS = 10
-NUM_BUBBLES = 100
+NUM_BUBBLES = 5  # NUM of bubbles will be -1 ball
+
