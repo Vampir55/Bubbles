@@ -136,7 +136,7 @@ def main():
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
             if bubbles[num].radius < 1:
-                score += bubble_score
+                score = score + int(bubble_score)
                 bubbles.pop(num)
 
         # screen update
