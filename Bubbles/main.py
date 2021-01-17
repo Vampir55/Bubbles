@@ -129,7 +129,8 @@ def main():
 
         # draw bubbles
         for num in range(0, settings.NUM_BUBBLES):
-            bubbles[num].draw()
+            if bubbles[num] in bubbles:
+                bubbles[num].draw()
             p = 1
             if num+1 >= settings.NUM_BUBBLES:
                 p = 0
