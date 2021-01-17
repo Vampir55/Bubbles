@@ -107,7 +107,7 @@ def create_bubbles():
 def create_game_field(score):
     pg.draw.rect(screen, colors.CYAN, (1, 1, settings.WIDTH-1, settings.SCORE_HEIGHT-6), width=5, border_radius=10)
     font = pg.font.Font(None, 46)
-    text_score = font.render('Bubbles: ' + settings.NUM_BUBBLES + 'Score: ' + str(score), True, colors.LIME, None)
+    text_score = font.render('Bubbles: ' + str(settings.NUM_BUBBLES) + 'Score: ' + str(score), True, colors.LIME, None)
     screen.blit(text_score, (10, 10))
 
 
