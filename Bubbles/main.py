@@ -80,9 +80,9 @@ def create_bubbles():
 
 def create_game_field(score):
     pg.draw.rect(screen, colors.CYAN, (1, 1, settings.WIDTH-1, settings.SCORE_HEIGHT-6), width=5, border_radius=10)
-    text_score = pg.font.Font(None, 16)
-    text_score.render('Score: ' + str(score), True, colors.PURPLE, None)
-    return text_score
+    font = pg.font.Font(None, 36)
+    text_score = font.render('Score: ' + str(score), True, colors.LIME, None)
+    screen.blit(text_score, (5, 5))
 
 
 def main():
@@ -98,7 +98,6 @@ def main():
         # there is main loop and asking for events
         # draw game field
         create_game_field(10)
-        pg.blit(screen, (5, 5))
         # draw bubbles
         for num in range(0, settings.NUM_BUBBLES):
             bubbles[num].draw()
