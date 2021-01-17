@@ -129,9 +129,9 @@ def main():
                 p = 0
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
-            if bubble_score:
+            if bubbles[num].radius < 1:
                 score += bubble_score
-                bubbles.pop(__index=num)
+                bubbles.pop(num)
 
         # screen update
         pg.display.flip()
