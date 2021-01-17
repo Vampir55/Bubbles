@@ -90,9 +90,9 @@ def create_bubbles():
         while colors.COLORS_LIST[clr_rnd] == settings.BACKGROUND:
             clr_rnd = rnd.randint(0, len(colors.COLORS_LIST)-1)
         # score colors settings
-        if clr_rnd == colors.RED:
+        if colors.COLORS_LIST[clr_rnd] == colors.RED:
             score_rnd = -100
-        elif clr_rnd == colors.CYAN:
+        elif colors.COLORS_LIST[clr_rnd] == colors.CYAN:
             score_rnd = 50
         else:
             score_rnd = rnd.randint(0, 40)
