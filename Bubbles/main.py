@@ -58,6 +58,7 @@ class Bubble:
             for i_other in range(1, other_obj.r_length):
                 pass
 
+
 def create_bubbles():
     # Creating Bubbles
     rnd.seed()
