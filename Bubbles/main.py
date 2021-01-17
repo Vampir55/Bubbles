@@ -15,6 +15,7 @@ class Bubble:
         self.x, self.y = 0, 0
         self.vx, self.vy = 0, 0
         self.radius = 10
+        self.v_radius = 0
         self.coordinates = (self.x, self.y)
         self.speed = (self.vx, self.vy)
         self.color = (0, 0, 0)
@@ -32,6 +33,12 @@ class Bubble:
         self.x = self.coordinates[0] + self.vx
         self.y = self.coordinates[1] + self.vy
         self.coordinates = (self.x, self.y)
+        rad = self.radius + self.v_radius
+        if self.radius > 1:
+            self.radius = rad
+        else:
+            self.radius = 0
+        # Drawing
         pg.draw.circle(screen, self.color, self.coordinates, self.radius)
         pg.draw.circle(screen, colors.WHITE, (self.x+self.radius/2, self.y-self.radius/2), self.radius/5)
         pg.draw.arc(screen, colors.BLACK, (self.x-self.radius+2, self.y-self.radius-2, self.radius * 2,
@@ -65,8 +72,7 @@ class Bubble:
                 (m_pos[1] < self.y + self.radius) and (m_pos[1] > self.y - self.radius) and \
                 (pg.mouse.get_pressed() == (True, False, False)):
             self.vx, self.vy = 0, 0
-            for rad in range(self.radius, 0, -1):
-                self.radius = rad
+            self.v_radius = -1
             return self.score
 
 
