@@ -138,6 +138,7 @@ def main():
             if bubbles[num].radius < 1:
                 score = score + bubble_score
                 bubbles.pop(num)
+                settings.NUM_BUBBLES -= 1
 
         # screen update
         pg.display.flip()
