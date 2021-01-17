@@ -93,11 +93,13 @@ def main():
     running = True
     while running:
         for event in pg.event.get():
+            # there is main loop and asking for events
             if event.type == pg.QUIT:
                 running = False
-        # there is main loop and asking for events
+
         # draw game field
         create_game_field(0)
+
         # draw bubbles
         for num in range(0, settings.NUM_BUBBLES):
             bubbles[num].draw()
