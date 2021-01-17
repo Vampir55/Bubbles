@@ -58,8 +58,7 @@ class Bubble:
             for i_other in range(1, other_obj.r_length):
                 pass
 
-
-def main():
+def create_bubbles():
     # Creating Bubbles
     rnd.seed()
     bubbles = []
@@ -75,6 +74,12 @@ def main():
         bubbles.append(Bubble())
         bubbles[num].create(rad, (cord_x, cord_y), colors.COLORS_LIST[clr_rnd])
         bubbles[num].speed = (spd_x, spd_y)
+    return bubbles
+
+
+def main():
+    # Call function create bubbles
+    bubbles = create_bubbles()
 
     # stats main loop
     running = True
