@@ -141,6 +141,9 @@ def main():
             p = 1
             if num == settings.NUM_BUBBLES-1:
                 p = 0
+            #for other_obj in range(0, settings.NUM_BUBBLES-1):
+                #if other_obj != num:
+                    #bubbles[num].test_collision(bubbles[other_obj])
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
             if bubbles[num].radius <= 1:
