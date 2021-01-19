@@ -119,14 +119,15 @@ def message(text: str, sec: int):
     font = pg.font.Font(None, 46)
     text_score = font.render(text, True, colors.CYAN, None)
     screen.blit(text_score, (settings.WIDTH/2-225, settings.HEIGHT/2))
-    pg.time.delay(sec*10)
+    pg.display.flip()
+    pg.time.delay(sec*1000)
 
 
 def main():
     # Call function create bubbles
     bubbles = create_bubbles()
     score = 0
-    message("Try not push RED bubbles!", 5)
+    message("Try not push RED bubbles!", 3)
 
     # stats main loop
     running = True
@@ -145,10 +146,11 @@ def main():
             bubble.draw()
             for num2, other_bubble in enumerate(bubbles):
                 bubble.test_collision(other_bubble)
-                if bubble.radius <= 1:
-                    score = score + bubble_score
-                    bubbles.remove(bubbles[num])
+
             bubble_score = bubble.test_mouse_pressed()
+            if bubble.radius <= 1:
+                score = score + bubble_score
+                bubbles.remove(bubbles[num])
             if bubble.color != colors.RED or num != 0:
                 flag_endgame = False
 
