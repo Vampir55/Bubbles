@@ -50,14 +50,16 @@ class Bubble:
                                            self.radius * 2), math.pi+0.4, 3 / 2 * math.pi-0.4, width=1)
 
     def test_collision(self, other_obj):
+        # test collisions with screen borders
         if self.x + self.radius >= settings.WIDTH or self.x - self.radius <= 0:
             self.vx *= -1
         if self.y + self.radius >= settings.HEIGHT or self.y - self.radius - settings.SCORE_HEIGHT <= 0:
             self.vy *= -1
-        if (self.x + self.radius == other_obj.x - other_obj.radius) or \
-                (self.y + self.radius == other_obj.y - other_obj.radius) or \
-                (self.x - self.radius == other_obj.x + other_obj.radius) or \
-                (self.y - self.radius == other_obj.y + other_obj.radius):
+        # test collisions with other objects
+        if ((self.x + self.radius > other_obj.x - other_obj.radius) or
+            (self.x - self.radius < other_obj.x + other_obj.radius)) and\
+                ((self.y + self.radius > other_obj.y - other_obj.radius) or
+                 (self.y - self.radius < other_obj.y + other_obj.radius)):
             self.vx *= -1
             self.vy *= -1
         self.speed = (self.vx, self.vy)
@@ -143,7 +145,7 @@ def main():
             bubble.draw()
             for num2, other_bubble in enumerate(bubbles):
                 if bubble != other_bubble:
-                    bubble.test_collision(bubbles[num2])
+                    bubble.test_collision(other_bubble)
             bubble_score = bubble.test_mouse_pressed()
             if bubble.radius <= 1:
                 score = score + bubble_score
