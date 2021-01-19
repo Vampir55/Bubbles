@@ -111,11 +111,12 @@ def create_game_field(score):
     screen.blit(text_score, (10, 10))
 
 
-def finish_game(score):
+def message(text: str, sec: int):
     pg.draw.rect(screen, colors.BLUE, (settings.WIDTH/2-250, settings.HEIGHT/2-10, 500, settings.SCORE_HEIGHT), width=8, border_radius=20)
     font = pg.font.Font(None, 46)
-    text_score = font.render('Game over! Your score is ' + str(score) + '!', True, colors.CYAN, None)
+    text_score = font.render(text, True, colors.CYAN, None)
     screen.blit(text_score, (settings.WIDTH/2-225, settings.HEIGHT/2))
+    pg.time.delay(sec*1000)
 
 
 def main():
@@ -152,10 +153,11 @@ def main():
                 settings.NUM_BUBBLES -= 1
             if bubbles[num].color != colors.RED or num != 0:
                 flag_endgame = False
+                message(str(num), 2)
 
         if flag_endgame:
             # Calling finish game function
-            finish_game(score)
+            message('Game over! Your score is ' + str(score) + '!', 10)
             # running = False
 
         # screen update
