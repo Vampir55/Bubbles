@@ -139,7 +139,7 @@ def main():
 
         # draw bubbles
         flag_endgame = True
-        for num in range(0, enumerate(bubbles)):
+        for num in enumerate(bubbles):
             if bubbles[num].is_alive:
                 bubbles[num].draw()
             bubbles[num].test_collision(bubbles[num+p])
