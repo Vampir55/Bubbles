@@ -56,10 +56,10 @@ class Bubble:
         if self.y + self.radius >= settings.HEIGHT or self.y - self.radius - settings.SCORE_HEIGHT <= 0:
             self.vy *= -1
         # test collisions with other objects
-        if ((self.x + self.radius > other_obj.x - other_obj.radius) or
-            (self.x - self.radius < other_obj.x + other_obj.radius)) and\
-                ((self.y + self.radius > other_obj.y - other_obj.radius) or
-                 (self.y - self.radius < other_obj.y + other_obj.radius)):
+        if ((self.x + self.radius == other_obj.x - other_obj.radius) or
+            (self.x - self.radius == other_obj.x + other_obj.radius)) and\
+                ((self.y + self.radius == other_obj.y - other_obj.radius) or
+                 (self.y - self.radius == other_obj.y + other_obj.radius)):
             self.vx *= -1
             self.vy *= -1
         self.speed = (self.vx, self.vy)
@@ -119,14 +119,14 @@ def message(text: str, sec: int):
     font = pg.font.Font(None, 46)
     text_score = font.render(text, True, colors.CYAN, None)
     screen.blit(text_score, (settings.WIDTH/2-225, settings.HEIGHT/2))
-    pg.time.delay(sec)
+    pg.time.delay(sec*10)
 
 
 def main():
     # Call function create bubbles
     bubbles = create_bubbles()
     score = 0
-    message("Try not push RED bubbles!", 2)
+    message("Try not push RED bubbles!", 5)
 
     # stats main loop
     running = True
@@ -144,12 +144,11 @@ def main():
         for num, bubble in enumerate(bubbles):
             bubble.draw()
             for num2, other_bubble in enumerate(bubbles):
-                if bubble != other_bubble:
-                    bubble.test_collision(other_bubble)
+                bubble.test_collision(other_bubble)
+                if bubble.radius <= 1:
+                    score = score + bubble_score
+                    bubbles.remove(bubbles[num])
             bubble_score = bubble.test_mouse_pressed()
-            if bubble.radius <= 1:
-                score = score + bubble_score
-                bubbles.remove(bubbles[num])
             if bubble.color != colors.RED or num != 0:
                 flag_endgame = False
 
