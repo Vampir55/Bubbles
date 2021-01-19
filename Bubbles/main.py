@@ -50,6 +50,7 @@ class Bubble:
                                            self.radius * 2), math.pi+0.4, 3 / 2 * math.pi-0.4, width=1)
 
     def test_collision(self, other_obj):
+        collision_flag = False
         # test collisions with screen borders
         if self.x + self.radius >= settings.WIDTH or self.x - self.radius <= 0:
             self.vx *= -1
@@ -61,12 +62,15 @@ class Bubble:
                 ((self.y - self.radius <= other_obj.y + other_obj.radius) or
                     (self.y + self.radius >= other_obj.y - other_obj.radius)):
             self.vy *= -1
+            collision_flag = True
         if ((self.y + self.radius > other_obj.y - other_obj.radius) and (
                 self.y + self.radius < other_obj.y + other_obj.radius)) and \
-                ((self.x - self.radius == other_obj.x + other_obj.radius) or
-                    (self.x + self.radius == other_obj.x - other_obj.radius)):
+                ((self.x - self.radius <= other_obj.x + other_obj.radius) or
+                    (self.x + self.radius >= other_obj.x - other_obj.radius)):
             self.vx *= -1
+            collision_flag = True
         self.speed = (self.vx, self.vy)
+        return collision_flag
 
     def test_collision_circle(self, other_obj):  # FIXME
         for i_self in range(1, self.r_length):
@@ -111,10 +115,10 @@ def create_bubbles():
     return bubbles
 
 
-def create_game_field(score):
+def create_game_field(score, bubbles_num):
     pg.draw.rect(screen, colors.CYAN, (1, 1, settings.WIDTH-1, settings.SCORE_HEIGHT-6), width=5, border_radius=10)
     font = pg.font.Font(None, 46)
-    text_score = font.render('Bubbles: ' + str(settings.NUM_BUBBLES-1) + '   Score: ' + str(score), True, colors.LIME, None)
+    text_score = font.render('Bubbles: ' + str(bubbles_num) + '   Score: ' + str(score), True, colors.LIME, None)
     screen.blit(text_score, (10, 10))
 
 
@@ -142,7 +146,7 @@ def main():
                 running = False
 
         # draw game field
-        create_game_field(score)
+        create_game_field(score, len(bubbles))
 
         # draw bubbles
         flag_endgame = True
