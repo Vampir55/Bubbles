@@ -21,6 +21,7 @@ class Bubble:
         self.color = (0, 0, 0)
         self.r_length = 2*math.pi*self.radius
         self.score = 0
+        self.is_alive = True
 
     def create(self, radius, coordinates, color):
         self.radius = radius
@@ -137,24 +138,17 @@ def main():
         create_game_field(score)
 
         # draw bubbles
-        flag_endgame = True
-        for num in range(0, settings.NUM_BUBBLES-1):
-            bubbles[num].draw()
-            p = 1
-            if num == settings.NUM_BUBBLES-1:
-                p = 0
-            #for other_obj in range(0, settings.NUM_BUBBLES-1):
-                #if other_obj != num:
-                    #bubbles[num].test_collision(bubbles[other_obj])
+        flag_endgame = true
+        for num in range(0, enumerate(bubbles)):
+            if bubbles[num].is_alive:
+                bubbles[num].draw()
             bubbles[num].test_collision(bubbles[num+p])
             bubble_score = bubbles[num].test_mouse_pressed()
             if bubbles[num].radius <= 1:
                 score = score + bubble_score
                 bubbles.remove(bubbles[num])
-                settings.NUM_BUBBLES -= 1
             if bubbles[num].color != colors.RED or num != 0:
                 flag_endgame = False
-                message(str(num), 2)
 
         if flag_endgame:
             # Calling finish game function
