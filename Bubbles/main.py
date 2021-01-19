@@ -57,16 +57,24 @@ class Bubble:
         if self.y + self.radius >= settings.HEIGHT or self.y - self.radius - settings.SCORE_HEIGHT <= 0:
             self.vy *= -1
         # test collisions with other objects
-        if ((self.x + self.radius > other_obj.x - other_obj.radius) and (
-                self.x + self.radius < other_obj.x + other_obj.radius)) and \
-                ((self.y - self.radius <= other_obj.y + other_obj.radius) or
-                    (self.y + self.radius >= other_obj.y - other_obj.radius)):
+        if (self.x > other_obj.x - other_obj.radius) and \
+            (self.x < other_obj.x + other_obj.radius) and \
+            (self.y + self.radius > other_obj.y - other_obj.radius) and (self.vx > 0):
             self.vy *= -1
             collision_flag = True
-        if ((self.y + self.radius > other_obj.y - other_obj.radius) and (
-                self.y + self.radius < other_obj.y + other_obj.radius)) and \
-                ((self.x - self.radius <= other_obj.x + other_obj.radius) or
-                    (self.x + self.radius >= other_obj.x - other_obj.radius)):
+        if (self.x > other_obj.x - other_obj.radius) and \
+                (self.x < other_obj.x + other_obj.radius) and \
+                (self.y - self.radius > other_obj.y + other_obj.radius) and (self.vx < 0):
+            self.vy *= -1
+            collision_flag = True
+        if (self.y > other_obj.y - other_obj.radius) and \
+                (self.y < other_obj.y + other_obj.radius) and \
+                (self.x - self.radius < other_obj.x + other_obj.radius) and (self.vx < 0):
+            self.vx *= -1
+            collision_flag = True
+        if (self.y > other_obj.y - other_obj.radius) and \
+                (self.y < other_obj.y + other_obj.radius) and \
+                (self.x + self.radius > other_obj.x - other_obj.radius) and (self.vx > 0):
             self.vx *= -1
             collision_flag = True
         self.speed = (self.vx, self.vy)
