@@ -123,6 +123,7 @@ def main():
     # Call function create bubbles
     bubbles = create_bubbles()
     score = 0
+    message("Try not push RED bubbles!", 2)
 
     # stats main loop
     running = True
