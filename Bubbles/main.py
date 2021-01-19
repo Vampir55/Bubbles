@@ -116,7 +116,7 @@ def message(text: str, sec: int):
     font = pg.font.Font(None, 46)
     text_score = font.render(text, True, colors.CYAN, None)
     screen.blit(text_score, (settings.WIDTH/2-225, settings.HEIGHT/2))
-    pg.time.delay(sec*1000)
+    pg.time.delay(sec*10)
 
 
 def main():
