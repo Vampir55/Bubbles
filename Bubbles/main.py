@@ -139,16 +139,17 @@ def main():
 
         # draw bubbles
         flag_endgame = True
-        for bubble in enumerate(bubbles):
-            for other_bubble in enumerate(bubbles):
-                bubble.draw()
-                if bubble != other_bubble: bubble.test_collision(bubbles[other_bubble])
-                bubble_score = bubble.test_mouse_pressed()
-                if bubble.radius <= 1:
-                    score = score + bubble_score
-                    bubbles.remove(bubble)
-                if bubble.color != colors.RED or bubble.index() != 0:
-                    flag_endgame = False
+        for num, bubble in enumerate(bubbles):
+            bubble.draw()
+            for num2, other_bubble in enumerate(bubbles):
+                if bubble != other_bubble:
+                    bubble.test_collision(bubbles[num2])
+            bubble_score = bubble.test_mouse_pressed()
+            if bubble.radius <= 1:
+                score = score + bubble_score
+                bubbles.remove(bubbles[num])
+            if bubble.color != colors.RED or num != 0:
+                flag_endgame = False
 
         if flag_endgame:
             # Calling finish game function
