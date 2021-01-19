@@ -138,7 +138,7 @@ def main():
         create_game_field(score)
 
         # draw bubbles
-        flag_endgame = true
+        flag_endgame = True
         for num in range(0, enumerate(bubbles)):
             if bubbles[num].is_alive:
                 bubbles[num].draw()
