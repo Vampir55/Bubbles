@@ -62,19 +62,20 @@ class Bubble:
                 (self.y + self.radius == other_obj.y - other_obj.radius) and (self.vx > 0):
             self.vy *= -1
             collision_flag = True
-        if (self.x > other_obj.x - other_obj.radius) and \
+        elif (self.x > other_obj.x - other_obj.radius) and \
                 (self.x < other_obj.x + other_obj.radius) and \
                 (self.y - self.radius == other_obj.y + other_obj.radius) and (self.vx < 0):
             self.vy *= -1
             collision_flag = True
-        if (self.y > other_obj.y - other_obj.radius) and \
+        elif (self.y > other_obj.y - other_obj.radius) and \
                 (self.y < other_obj.y + other_obj.radius) and \
                 (self.x - self.radius == other_obj.x + other_obj.radius) and (self.vx < 0):
             self.vx *= -1
             collision_flag = True
-        if (self.y > other_obj.y - other_obj.radius) and \
-                (self.y < other_obj.y + other_obj.radius) and \
-                (self.x + self.radius == other_obj.x - other_obj.radius) and (self.vx > 0):
+        # elif (self.y > other_obj.y - other_obj.radius) and \
+        #         (self.y < other_obj.y + other_obj.radius) and \
+        #         (self.x + self.radius == other_obj.x - other_obj.radius) and (self.vx > 0):
+        else:
             self.vx *= -1
             collision_flag = True
         self.speed = (self.vx, self.vy)
