@@ -49,7 +49,8 @@ class Block(GameObject):
 
 
 def main():
-    pass
+    NewWindow = GameWindow()
+    NewWindow.draw()
 
 
 main()
