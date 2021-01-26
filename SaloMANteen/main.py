@@ -17,13 +17,13 @@ class GameWindow:
     def draw(self):
         while not self.is_finished:
             for event in pg.event.get():
-                if event == pg.QUIT:
+                if event.type == pg.QUIT:
                     self.is_finished = True
-                elif event == pg.K_RIGHT:
+                elif event.type == pg.K_RIGHT:
                     pass  # Right arrow
-                elif event == pg.K_LEFT:
+                elif event.type == pg.K_LEFT:
                     pass  # Left arrow
-                elif event == pg.K_SPACE:
+                elif event.type == pg.K_SPACE:
                     pass  # Space key for jump
                 else:
                     pass  # Stand don't move
