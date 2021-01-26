@@ -13,19 +13,20 @@ class GameWindow:
         screen.fill((0, 0, 0))
         self.is_finished = False
         self.clock = pg.time.Clock
-    def draw(self):
-        while self.is_finished == False:
-            if pg.event.get() == pg.QUIT:
-                self.is_finished = True
-            elif pg.event.get() == pg.K_RIGHT:
-                pass # Right arrow
-            elif pg.event.get() == pg.K_LEFT:
-                pass # Left arrow
-            elif pg.event.get() == pg.K_SPACE:
-                pass # Space key for jump
-            else:
-                pass # Stand don't move
 
+    def draw(self):
+        while not self.is_finished:
+            for event in pg.event.get():
+                if event == pg.QUIT:
+                    self.is_finished = True
+                elif event == pg.K_RIGHT:
+                    pass  # Right arrow
+                elif event == pg.K_LEFT:
+                    pass  # Left arrow
+                elif event == pg.K_SPACE:
+                    pass  # Space key for jump
+                else:
+                    pass  # Stand don't move
 
 
 class GameObject:
@@ -49,9 +50,8 @@ class Block(GameObject):
 
 
 def main():
-    NewWindow = GameWindow()
-    NewWindow.draw()
+    newWindow = GameWindow()
+    newWindow.draw()
 
 
 main()
-
