@@ -28,3 +28,10 @@ class Enemy(GameObject):
 class Block(GameObject):
     pass
 
+
+def main():
+    pass
+
+
+main()
+
