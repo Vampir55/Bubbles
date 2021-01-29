@@ -18,17 +18,21 @@ class GameWindow:
 
     def draw(self):
         scene = GameScene()
+        player = Player()
         while not self.is_finished:
             # Draw scene
             scene.drawscene()
+            player.drawplayer()
             keys = pg.key.get_pressed()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.is_finished = True
                 if keys[pg.K_RIGHT]:
-                    pass  # Right arrow
+                    # Right arrow
+                    player.x += player.speed
                 elif keys[pg.K_LEFT]:
-                    pass  # Left arrow
+                    # Left arrow
+                    player.x -= player.speed
                 elif keys[pg.K_SPACE]:
                     pass  # Space key for jump
                 else:
