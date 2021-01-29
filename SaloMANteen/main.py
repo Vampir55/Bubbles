@@ -7,6 +7,7 @@ import pygame as pg
 
 # Add new Classes
 class GameWindow:
+    screen = 0
     def __init__(self):
         self.screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
         pg.display.init()
