@@ -8,9 +8,9 @@ import pygame as pg
 # Add new Classes
 class GameWindow:
     def __init__(self):
-        screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
+        self.screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
         pg.display.init()
-        screen.fill((0, 0, 0))
+        self.screen.fill((0, 0, 0))
         self.is_finished = False
         self.clock = pg.time.Clock
 
@@ -42,7 +42,9 @@ class GameObject:
 
 
 class GameScene(GameObject):
-    pass
+    def draw(self):
+        pg.draw.rect(GameWindow.screen, (255, 255, 255), (0, 0), (200, 200))
+
 
 
 class Player(GameObject):
