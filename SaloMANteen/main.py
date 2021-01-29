@@ -16,17 +16,20 @@ class GameWindow:
 
     def draw(self):
         while not self.is_finished:
+            # Draw scene
+            keys = pg.key.get_pressed()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.is_finished = True
-                elif event.type == pg.K_RIGHT:
+                if keys[pg.K_RIGHT]:
                     pass  # Right arrow
-                elif event.type == pg.K_LEFT:
+                elif keys[pg.K_LEFT]:
                     pass  # Left arrow
-                elif event.type == pg.K_SPACE:
+                elif keys[pg.K_SPACE]:
                     pass  # Space key for jump
                 else:
                     pass  # Stand don't move
+            # Draw objects
 
 
 class GameObject:
