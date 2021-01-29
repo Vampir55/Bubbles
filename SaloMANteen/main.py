@@ -69,17 +69,17 @@ class GameObject:
 
 
 class GameScene(GameObject):
-    blocks[0] = ''
+    blocks = []
 
     def create(self):
-        for count in range(0, 10):
-            blocks[count] = Block()
-            blocks[count].x = rnd.randint(0, settings.HEIGHT)
-            blocks.y = rnd.randint(0, settings.WIDTH)
+        for count in range(1, 10):
+            self.blocks.append(Block())
+            self.blocks[count-1].x = rnd.randint(0, settings.HEIGHT)
+            self.blocks[count-1].y = rnd.randint(0, settings.WIDTH)
 
     def drawscene(self):
-        for count in range(0, 10):
-           blocks[count].create()
+        for count in range(1, 10):
+           self.blocks[count-1].create()
 
 
 
