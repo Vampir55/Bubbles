@@ -20,7 +20,7 @@ class GameWindow:
         clock = pg.time.Clock()
         scene = GameScene()
         player = Player()
-        player.y = settings.WIDTH - 20
+        player.y = settings.WIDTH - 20 - settings.player_HEIGHT
         while not self.is_finished:
             # Draw scene
             scene.drawscene()
