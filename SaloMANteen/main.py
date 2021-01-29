@@ -20,6 +20,7 @@ class GameWindow:
         clock = pg.time.Clock()
         scene = GameScene()
         player = Player()
+        player.y = settings.WIDTH - 20
         while not self.is_finished:
             # Draw scene
             scene.drawscene()
@@ -60,7 +61,7 @@ class GameScene(GameObject):
 
 class Player(GameObject):
     def drawplayer(self):
-        pg.draw.rect(GameWindow.screen, (25, 0, 255), (self.x, self.y, 20, 80))
+        pg.draw.rect(GameWindow.screen, (25, 0, 255), (self.x, self.y, settings.player_HEIGHT, settings.player_WIDTH))
 
 
 class Enemy(GameObject):
