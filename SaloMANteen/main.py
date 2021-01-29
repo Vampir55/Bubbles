@@ -34,6 +34,7 @@ class GameWindow:
                 else:
                     pass  # Stand don't move
             # Draw objects
+            pg.display.update()
 
 
 class GameObject:
@@ -47,7 +48,7 @@ class GameObject:
 
 class GameScene(GameObject):
     def drawscene(self):
-        pg.draw.rect(GameWindow.screen, (255, 255, 255), (0, 0), (200, 200))
+        pg.draw.rect(GameWindow.screen, (255, 0, 255), (0, 0, 200, 200))
 
 
 
