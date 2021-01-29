@@ -19,6 +19,7 @@ class GameWindow:
     def draw(self):
         clock = pg.time.Clock()
         scene = GameScene()
+        scene.create()
         player = Player()
         player.y = settings.WIDTH - 20 - settings.player_WIDTH
         while not self.is_finished:
@@ -29,9 +30,12 @@ class GameWindow:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.is_finished = True
-            if keys[pg.K_RIGHT] and player.x <= settings.HEIGHT/2-settings.player_HEIGHT:
+            if keys[pg.K_RIGHT] and player.x < settings.HEIGHT/2-settings.player_HEIGHT:
                 # Right arrow
                 player.x += player.speed
+            if keys[pg.K_RIGHT] and player.x == settings.HEIGHT/2-settings.player_HEIGHT:
+                # Right arrow
+                scene.x -= scene.speed
             if keys[pg.K_LEFT] and player.x >= 5:
                 # Left arrow
                 player.x -= player.speed
@@ -51,6 +55,7 @@ class GameWindow:
 
             # Draw objects
             pg.display.update()
+            self.screen.fill((255, 255, 0))
             clock.tick(settings.FPS)
 
 
@@ -64,8 +69,19 @@ class GameObject:
 
 
 class GameScene(GameObject):
+    blocks[0] = ''
+
+    def create(self):
+        for count in range(0, 10):
+            blocks[count] = Block()
+            blocks[count].x = rnd.randint(0, settings.HEIGHT)
+            blocks.y = rnd.randint(0, settings.WIDTH)
+
     def drawscene(self):
-        pg.draw.rect(GameWindow.screen, (255, 0, 255), (self.x, self.y, settings.HEIGHT, settings.WIDTH))
+        for count in range(0, 10):
+           blocks[count].create()
+
+
 
 
 
@@ -82,7 +98,9 @@ class Enemy(GameObject):
 
 
 class Block(GameObject):
-    pass
+    def create(self):
+        pg.draw.rect(GameWindow.screen, (rnd.randint(0, 255), rnd.randint(0, 255), rnd.randint(0, 255)),
+                     (self.x, self.y, rnd.randint(10, 40), rnd.randint(10, 40)))
 
 
 def main():
