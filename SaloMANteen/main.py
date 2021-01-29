@@ -7,13 +7,14 @@ import pygame as pg
 
 # Add new Classes
 class GameWindow:
-    screen = 0
+    screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
+
     def __init__(self):
-        self.screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
+        screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
         pg.display.init()
-        self.screen.fill((0, 0, 0))
+        screen.fill((0, 0, 0))
         self.is_finished = False
-        self.clock = pg.time.Clock
+        clock = pg.time.Clock
 
     def draw(self):
         scene = GameScene()
