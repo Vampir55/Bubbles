@@ -33,7 +33,12 @@ class GameWindow:
 
 
 class GameObject:
-    pass
+    def __init__(self):
+        self.x, self.y = 0, 0
+        self.speed = 5
+        self.is_moving = False
+        self.is_collide = False
+        self.picture = 0
 
 
 class GameScene(GameObject):
