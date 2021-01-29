@@ -15,8 +15,10 @@ class GameWindow:
         self.clock = pg.time.Clock
 
     def draw(self):
+        scene = GameScene()
         while not self.is_finished:
             # Draw scene
+            scene.drawscene()
             keys = pg.key.get_pressed()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -42,7 +44,7 @@ class GameObject:
 
 
 class GameScene(GameObject):
-    def draw(self):
+    def drawscene(self):
         pg.draw.rect(GameWindow.screen, (255, 255, 255), (0, 0), (200, 200))
 
 
