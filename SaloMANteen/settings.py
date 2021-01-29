@@ -1,6 +1,6 @@
 # Screen settings
 HEIGHT = 800
-WIGHT = 600
+WIDTH = 600
 FPS = 30
 
 # Player settings

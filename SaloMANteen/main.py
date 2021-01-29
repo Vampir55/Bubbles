@@ -7,10 +7,10 @@ import pygame as pg
 
 # Add new Classes
 class GameWindow:
-    screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
+    screen = pg.display.set_mode((settings.HEIGHT, settings.WIDTH), 0, 32)
 
     def __init__(self):
-        screen = pg.display.set_mode((settings.HEIGHT, settings.WIGHT), 0, 32)
+        screen = pg.display.set_mode((settings.HEIGHT, settings.WIDTH), 0, 32)
         pg.display.init()
         screen.fill((0, 0, 0))
         self.is_finished = False
@@ -48,12 +48,13 @@ class GameObject:
 
 class GameScene(GameObject):
     def drawscene(self):
-        pg.draw.rect(GameWindow.screen, (255, 0, 255), (0, 0, 200, 200))
+        pg.draw.rect(GameWindow.screen, (255, 0, 255), (self.x, self.y, settings.HEIGHT, settings.WIDTH))
 
 
 
 class Player(GameObject):
-    pass
+    def drawplayer(self):
+        pg.draw.rect(GameWindow.screen, (25, 0, 255), (self.x, self.y, 20, 80))
 
 
 class Enemy(GameObject):
