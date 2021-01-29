@@ -15,7 +15,6 @@ class GameWindow:
         pg.display.init()
         screen.fill((0, 0, 0))
         self.is_finished = False
-        clock = pg.time.Clock
 
     def draw(self):
         clock = pg.time.Clock
@@ -41,7 +40,7 @@ class GameWindow:
                 pass  # Stand don't move
             # Draw objects
             pg.display.update()
-            clock.tick(settings.FPS)
+            clock.tick(30)
 
 
 class GameObject:
