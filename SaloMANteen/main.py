@@ -8,6 +8,7 @@ import pygame as pg
 # Add new Classes
 class GameWindow:
     screen = pg.display.set_mode((settings.HEIGHT, settings.WIDTH), 0, 32)
+    clock = pg.time.Clock
 
     def __init__(self):
         screen = pg.display.set_mode((settings.HEIGHT, settings.WIDTH), 0, 32)
@@ -17,6 +18,7 @@ class GameWindow:
         clock = pg.time.Clock
 
     def draw(self):
+        clock = pg.time.Clock
         scene = GameScene()
         player = Player()
         while not self.is_finished:
@@ -39,6 +41,7 @@ class GameWindow:
                 pass  # Stand don't move
             # Draw objects
             pg.display.update()
+            clock.tick(settings.FPS)
 
 
 class GameObject:
