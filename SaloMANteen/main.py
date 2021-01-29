@@ -27,16 +27,16 @@ class GameWindow:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.is_finished = True
-                if keys[pg.K_RIGHT]:
-                    # Right arrow
-                    player.x += player.speed
-                elif keys[pg.K_LEFT]:
-                    # Left arrow
-                    player.x -= player.speed
-                elif keys[pg.K_SPACE]:
-                    pass  # Space key for jump
-                else:
-                    pass  # Stand don't move
+            if keys[pg.K_RIGHT]:
+                # Right arrow
+                player.x += player.speed
+            elif keys[pg.K_LEFT]:
+                # Left arrow
+                player.x -= player.speed
+            elif keys[pg.K_SPACE]:
+                pass  # Space key for jump
+            else:
+                pass  # Stand don't move
             # Draw objects
             pg.display.update()
 
